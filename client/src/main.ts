@@ -6,9 +6,6 @@ import { createBootstrap } from 'bootstrap-vue-next'
 import MasonryWall from '@yeger/vue-masonry-wall'
 import VueEasyLightbox from 'vue-easy-lightbox'
 import { createManager } from '@vue-youtube/core'
-import Vueform from '@vueform/vueform'
-import vueformConfig from './../vueform.config'
-
 import App from './App.vue'
 import type { UserModule } from './types'
 
@@ -17,7 +14,6 @@ import './styles/main.scss'
 import 'uno.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
-import '@vueform/vueform/dist/vueform.css'
 
 export const createApp = ViteSSG(
   App,
@@ -30,9 +26,6 @@ export const createApp = ViteSSG(
     ctx.app.use(MasonryWall)
     ctx.app.use(VueEasyLightbox)
     ctx.app.use(createManager())
-    if (typeof window !== 'undefined') {
-      ctx.app.use(Vueform, vueformConfig)
-    }
     // install all modules under `modules/`
     Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
       .forEach(i => i.install?.(ctx))

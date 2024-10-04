@@ -95,11 +95,11 @@ onMounted(fetchUser)
     box-shadow 0.3s ease-in-out;
 }
 .stars-container {
-  position: absolute; /* Абсолютное позиционирование для блока со звездами */
-  bottom: 0; /* Закрепляем внизу карточки */
+  position: absolute;
+  bottom: 0;
   left: 0;
   right: 0;
-  padding: 10px; /* Добавим немного отступа */
+  padding: 10px;
 }
 
 .star-text {
