@@ -26,8 +26,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    env:
-      VITE_VISINGERS_API: "https://visingers-api.megageorgio.ru"
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -44,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run build
+        run: npm run build -- --mode prod
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
