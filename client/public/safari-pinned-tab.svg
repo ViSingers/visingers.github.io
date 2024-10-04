@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created using Krita: https://krita.org -->
+
+<svg
+   width="42.24pt"
+   height="42.24pt"
+   viewBox="0 0 42.24 42.24"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="3.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="pt"
+     inkscape:zoom="14.524147"
+     inkscape:cx="28.125576"
+     inkscape:cy="28.160001"
+     inkscape:window-width="1920"
+     inkscape:window-height="1006"
+     inkscape:window-x="1276"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <defs
+     id="defs1" />
+  <g
+     id="shape0"
+     style="font-size:36px;font-family:'Humanist 521';letter-spacing:0.5;word-spacing:0;fill:#ff679d;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:0"
+     aria-label="VS">
+    <path
+       d="m 12.952435,34.331264 h 0.9 l 11.052,-24.7679998 h -3.636 L 13.456435,27.095264 5.7884348,9.5632642 h -3.672 z"
+       id="path3" />
+    <path
+       style="fill:#4ea6ea"
+       d="m 26.05245,32.243264 c 2.016,1.656 4.068,2.34 6.66,2.34 4.356,0 7.272,-2.808 7.272,-6.48 0,-4.14 -2.124,-5.796 -5.724,-8.028 -2.988,-1.872 -4.86,-2.916 -4.86,-4.86 0,-1.656 1.476,-2.916 3.744,-2.916 1.944,0 3.708,0.864 5.724,2.484 v -3.996 c -1.836,-1.1159998 -3.672,-1.6919998 -5.58,-1.6919998 -4.356,0 -7.272,2.8079998 -7.272,6.5519998 0,3.528 2.16,5.004 6.3,7.668 2.664,1.692 4.104,2.664 4.104,4.716 0,1.944 -1.476,3.168 -3.924,3.168 -2.412,0 -4.32,-1.188 -6.444,-3.6 z"
+       id="path4" />
+  </g>
+</svg>

@@ -1,0 +1,126 @@
+@import './markdown.css';
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import '@vueform/vueform/themes/bootstrap/scss/index.scss';
+
+.card-img-top {
+  object-fit: cover;
+width: 100%;
+height: 225px;
+}
+
+@include color-mode(light) {
+  body {
+    background: rgb(249, 249, 249);
+  }
+  .navbar {
+    background: rgb(237, 237, 237);
+  }
+  .vds-audio-layout {
+    background: rgb(237, 237, 237);
+    --audio-play-button-bg: rgb(224, 224, 224);
+    --audio-play-button-color: #4ea6ea;
+    --media-button-hover-bg: rgb(255 255 255 / 0.8);
+    --audio-controls-color: #4ea6ea;
+    --audio-volume-bg: rgb(237, 237, 237);
+    --audio-brand: #ff679d;
+    --media-time-color: gray;
+    --media-slider-thumb-bg: rgb(224, 224, 224);
+
+    --media-slider-track-progress-bg: white;
+    --media-slider-value-bg: rgb(224, 224, 224);
+    --media-slider-value-color: gray;
+    --media-slider-thumb-transition: opacity 0.2s ease-in, box-shadow 0.2s ease;
+  }
+}
+
+@include color-mode(dark) {
+  body {
+    background: rgb(38, 42, 46);
+  }
+  .navbar {
+    background: rgb(43, 52, 59);
+  }
+  .vds-audio-layout {
+    background: rgb(43, 52, 59);
+    --audio-play-button-bg: rgb(55, 65, 65);
+    --audio-play-button-color: #4ea6ea;
+    --media-button-hover-bg: rgb(255 255 255 / 0.2);
+    --audio-controls-color: #4ea6ea;
+    --audio-volume-bg: rgb(43, 52, 59);
+    --audio-brand: #ff679d;
+    --media-time-color: #f5f5f5;
+  }
+  .multiselect,
+  .multiselect-tags,
+  .multiselect-tags-search,
+  .multiselect-dropdown {
+    background-color: #212529;
+    border-color:rgb(73, 80, 87);
+    --vf-ring-color: #4ea6ea;
+  }
+
+}
+
+.languages-select .multiselect-tag {
+  background: #ff679d !important;
+}
+
+.types-select .multiselect-tag {
+  background: #4ea6ea !important;
+}
+
+.tags-select .multiselect-tag {
+  background: gray !important;
+}
+
+html,
+body,
+#app {
+  /*background-color:rgba(0, 0, 0, 0.0) !important;*/
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*html nav {
+  background: #cbcbcb;
+}
+
+html.dark {
+  background: #121212;
+  color-scheme: dark;
+}
+
+html.dark nav {
+  background: #1a1a1a;
+  color-scheme: dark;
+  color: #cbcbcb;
+}
+*/
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: rgb(13, 148, 136);
+  opacity: 0.75;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+
+.link {
+  color: gray;
+  text-decoration: none;
+}
+.link:hover {
+  color: darkgray;
+}

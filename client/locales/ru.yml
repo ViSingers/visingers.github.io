@@ -1,0 +1,42 @@
+nav:
+  singers: Вокалисты
+  groups: Группы
+  info: Информация
+button:
+  back: Назад
+  toggle_dark: Переключить режим
+  toggle_langs: Переключить язык
+  search: Поиск
+placeholder:
+  name: Имя вокалиста
+  languages: Языки войсбанков
+  types: Типы войсбанков
+  tags: Теги
+sort:
+  popular: Популярные
+  voicebank-count: Количество войсбанков
+  recently-updated: Недавно обновлены
+  new: Новые
+  old: Старые
+singer:
+  author: Автор
+  site: Сайт
+  siteLink: Ссылка
+  information: Основная информация
+  voicebanks: Войсбанки
+  samples: Примеры
+  gallery: Галерея
+  videos: Видео
+  download: Скачать
+info:
+  creators:
+    title: Создатели сайта
+    first-description: Разработка backend и frontend части
+    second-description: Тестирование, идеи по дизайну и функционалу сайта
+  videos:
+    title: Как добавить своего вокалиста
+    first-name: Гайд
+    second-name: Тоже гайд но для неадекватов
+user: Пользователь
+in-development: В разработке
+not-found: Страница не найдена

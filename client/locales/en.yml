@@ -1,0 +1,42 @@
+nav:
+  singers: Singers
+  groups: Groups
+  info: Information
+button:
+  back: Back
+  toggle_dark: Toggle mode
+  toggle_langs: Toggle language
+  search: Search
+placeholder:
+  name: Singer name
+  languages: Voicebank languages
+  types: Voicebank types
+  tags: Tags
+sort:
+  popular: Popular
+  voicebank-count: Voicebank count
+  recently-updated: Recently updated
+  new: New
+  old: Old
+singer:
+  author: Author
+  site: Website
+  siteLink: Link
+  information: General Information
+  voicebanks: Voicebanks
+  samples: Samples
+  gallery: Gallery
+  videos: Videos
+  download: Download
+info:
+  creators:
+    title: Made by
+    first-description: Backend, frontend development
+    second-description: Testing, design and site features ideas
+  videos:
+    title: How to add your singer
+    first-name: Normal guide
+    second-name: BEST GUIDE EVER!!!
+user: User
+in-development: In development
+not-found: Not found
