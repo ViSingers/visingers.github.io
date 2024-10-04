@@ -30,7 +30,9 @@ export const createApp = ViteSSG(
     ctx.app.use(MasonryWall)
     ctx.app.use(VueEasyLightbox)
     ctx.app.use(createManager())
-    ctx.app.use(Vueform, vueformConfig)
+    if (typeof window !== 'undefined') {
+      ctx.app.use(Vueform, vueformConfig)
+    }
     // install all modules under `modules/`
     Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
       .forEach(i => i.install?.(ctx))

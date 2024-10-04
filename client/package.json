@@ -91,6 +91,8 @@
   "resolutions": {
     "@typescript-eslint/utils": "^8.2.0"
   },
+  "simple-git-hooks": {
+  },
   "lint-staged": {
     "*": "eslint --fix"
   }
