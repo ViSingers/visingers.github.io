@@ -5,7 +5,6 @@ import { routes } from 'vue-router/auto-routes'
 import { createBootstrap } from 'bootstrap-vue-next'
 import MasonryWall from '@yeger/vue-masonry-wall'
 import VueEasyLightbox from 'vue-easy-lightbox'
-import { createManager } from '@vue-youtube/core'
 import App from './App.vue'
 import type { UserModule } from './types'
 
@@ -25,7 +24,6 @@ export const createApp = ViteSSG(
     ctx.app.use(createBootstrap())
     ctx.app.use(MasonryWall)
     ctx.app.use(VueEasyLightbox)
-    ctx.app.use(createManager())
     // install all modules under `modules/`
     Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
       .forEach(i => i.install?.(ctx))
