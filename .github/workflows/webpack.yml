@@ -42,7 +42,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run build -- --mode prod
+        run: npm run build
+        env:
+          VITE_VISINGERS_API: "https://visingers-api.megageorgio.ru"
+          VITE_VISINGERS_API_BASE_URL: "https://visingers-api.megageorgio.ru/api"
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
