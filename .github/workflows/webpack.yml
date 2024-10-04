@@ -28,6 +28,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       VITE_VISINGERS_API: "https://visingers-api.megageorgio.ru"
+      VITE_VISINGERS_API_BASE_URL: "https://visingers-api.megageorgio.ru/api"
     runs-on: ubuntu-latest
     defaults:
       run:
