@@ -13,7 +13,7 @@ async function fetchUser() {
     const route = useRoute('/users/[user]')
 
     const userLogin = route.params.user
-    const response = await axios.get(`https://visingers-api/megageorgio.ru/api/Users/${userLogin}`)
+    const response = await axios.get(`https://visingers-api.megageorgio.ru/api/Users/${userLogin}`)
     data.value = response.data
     page.value++
   }
