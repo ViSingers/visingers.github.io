@@ -195,7 +195,7 @@ export default defineConfig({
   server: {
     proxy: {
       '^/api/*': {
-        target: viteEnv.VITE_VISINGERS_API ?? 'https://visingers-api.megageorgio.ru',
+        target: viteEnv.VITE_VISINGERS_API,
         secure: false,
       },
     },
