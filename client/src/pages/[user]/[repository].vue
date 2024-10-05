@@ -65,7 +65,7 @@ const images = computed(() => {
           {{ data.name }}
         </h1>
         <p class="text-muted-foreground">
-          {{ currentLanguageDetails.description }}
+          <span style="white-space: pre-line">{{ currentLanguageDetails.description }}</span>
         </p>
         <p>
           {{ t('singer.author') }}: <router-link class="link" :to="{ path: `/users/${data.creatorLogin}` }">

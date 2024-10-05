@@ -19,7 +19,7 @@ sort:
   new: New
   old: Old
 singer:
-  author: Author
+  author: Published by
   site: Website
   siteLink: Link
   information: General Information
