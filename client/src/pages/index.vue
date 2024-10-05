@@ -178,7 +178,7 @@ onMounted(() => {
                 {{ singer.creatorName }}
               </router-link>
             </b-card-subtitle>
-            <b-card-body>
+            <b-card-body class="card-tags">
               <b-card-text>
                 <b-badge v-for="voicebankLanguage in singer.voicebankLanguages" :key="voicebankLanguage" class="rounded-pill badge-language">
                   {{ voicebankLanguage }}
@@ -212,39 +212,8 @@ onMounted(() => {
 <style src="@vueform/multiselect/themes/default.css"></style>
 
 <style scoped>
-.singer-card {
-  border-radius: 15px;
-  overflow: hidden;
-  padding-bottom: 40px;
-  transition:
-    transform 0.3s ease-in-out,
-    box-shadow 0.3s ease-in-out;
-  font-weight: normal;
-}
-.stars-container {
-  position: absolute; /* Абсолютное позиционирование для блока со звездами */
-  bottom: 0; /* Закрепляем внизу карточки */
-  left: 0;
-  right: 0;
-  padding: 10px; /* Добавим немного отступа */
-}
-
-.star-text {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.singer-card .card-body {
+.card-body {
   padding: 0px;
-}
-
-.singer-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.load-more-trigger {
-  height: 1px;
 }
 
 .badge {
@@ -257,19 +226,5 @@ onMounted(() => {
 
 .badge-voicebank {
   background-color: #4ea6ea !important;
-}
-
-.star-icon {
-  color: #ffc800 !important;
-}
-
-.star-text {
-  font-size: 20px;
-}
-
-.card-img-top {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
 }
 </style>

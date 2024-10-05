@@ -13,6 +13,7 @@ import './styles/main.scss'
 import 'uno.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
+import '@vueform/multiselect/themes/default.css'
 
 export const createApp = ViteSSG(
   App,

@@ -86,39 +86,8 @@ onMounted(fetchUser)
 </template>
 
 <style scoped>
-.singer-card {
-  border-radius: 15px;
-  overflow: hidden;
-  padding-bottom: 40px;
-  transition:
-    transform 0.3s ease-in-out,
-    box-shadow 0.3s ease-in-out;
-  font-weight: normal;
-}
-.stars-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-}
-
-.star-text {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.singer-card .card-body {
+.card-body {
   padding: 0px;
-}
-
-.singer-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.load-more-trigger {
-  height: 1px;
 }
 
 .badge {
@@ -131,13 +100,5 @@ onMounted(fetchUser)
 
 .badge-voicebank {
   background-color: #4ea6ea !important;
-}
-
-.star-icon {
-  color: #ffc800 !important;
-}
-
-.star-text {
-  font-size: 20px;
 }
 </style>
