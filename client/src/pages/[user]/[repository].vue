@@ -15,7 +15,7 @@ async function fetchData() {
 
     const userLogin = route.params.user
     const repositoryName = route.params.repository
-    const response = await axios.get(`http://visingers-api.megageorgio.ru/api/singers/${userLogin}/${repositoryName}`)
+    const response = await axios.get(`${import.meta.env.VITE_VISINGERS_API_BASE_URL}/singers/${userLogin}/${repositoryName}`)
     data.value = response.data
   }
   catch (error) {
