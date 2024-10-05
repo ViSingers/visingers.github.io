@@ -370,6 +370,8 @@ public partial class GitHubParserService : IHostedService, IDisposable
                     }
                 }
 
+                await _context.Tags.Where(tag => tag.Singers.Count == 0).ExecuteDeleteAsync();
+
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
