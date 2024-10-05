@@ -139,7 +139,10 @@ html.dark nav {
   transition:
     transform 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out;
-  font-weight: normal !important;
+}
+
+.singer-card * {
+  font-weight: normal;
 }
 
 .singer-card:hover {
