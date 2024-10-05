@@ -14,3 +14,4 @@ https://github.com/user-attachments/assets/bbc6d481-06f4-4973-a7c7-82487200e5d3
 - Add voicebanks to releases (release name should contain section name, zip file is required and mp3/wav samples are optional)
 - Add images to gallery directory (optional)
 - Add "visingers" tag
+- Wait ~1 minute and check the catalog
