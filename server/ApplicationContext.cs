@@ -60,7 +60,7 @@ public class ApplicationContext : DbContext
         modelBuilder.Entity<Voicebank>().ConfigurePropertyAsJson(e => e.Description);
 
         var languages = GetLanguages().Select((lang, i) => new VoicebankLanguage { Id = i + 1, Name = lang.Code, FullName = lang.Name });
-        var types = new string[] { "utau", "paintvoice", "diffsinger", "rvc", "freeloid", "coeiroink", "vocalshark", "niaoniao", "deepvocal" }
+        var types = new string[] { "utau", "paintvoice", "diffsinger", "rvc", "freeloid", "coeiroink", "vocalsharp", "niaoniao", "deepvocal" }
         .Select((type, i) => new VoicebankType { Id = i + 1, Name = type });
 
         modelBuilder.Entity<VoicebankLanguage>().HasData(languages);

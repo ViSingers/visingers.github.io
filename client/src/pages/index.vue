@@ -28,9 +28,15 @@ const translatedSortTypes = computed(() =>
 )
 
 async function fetchData() {
-  tags.value = (await axios.get(`https://visingers-api.megageorgio.ru/api/tags`)).data
-  types.value = (await axios.get(`https://visingers-api.megageorgio.ru/api/voicebankTypes`)).data
-  languages.value = (await axios.get(`https://visingers-api.megageorgio.ru/api/voicebankLanguages`)).data
+  tags.value = (await axios.get(`api/tags`, {
+    baseURL: 'https://visingers-api.megageorgio.ru/',
+  })).data
+  types.value = (await axios.get(`api/voicebankTypes`, {
+    baseURL: 'https://visingers-api.megageorgio.ru/',
+  })).data
+  languages.value = (await axios.get(`api/voicebankLanguages`, {
+    baseURL: 'https://visingers-api.megageorgio.ru/',
+  })).data
 }
 
 async function fetchSingers() {
@@ -39,7 +45,7 @@ async function fetchSingers() {
 
   loading.value = true
   try {
-    let requestUrl = `https://visingers-api.megageorgio.ru/api/singers?page=${page.value}&sort=${selectedSortType.value}`
+    let requestUrl = `api/singers?page=${page.value}&sort=${selectedSortType.value}`
     if (searchQuery.value) {
       requestUrl += `&name=${searchQuery.value}`
     }
@@ -59,7 +65,9 @@ async function fetchSingers() {
       })
     }
 
-    const response = await axios.get(requestUrl)
+    const response = await axios.get(requestUrl, {
+      baseURL: 'https://visingers-api.megageorgio.ru/',
+    })
     if (response.data.items.length === 0) {
       finished.value = true
     }
