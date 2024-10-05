@@ -8,6 +8,7 @@ if (builder.Environment.IsDevelopment())
     var connectionString = builder.Configuration.GetConnectionString("SQLiteConnection") ?? throw new InvalidOperationException("Connection string 'SQLiteConnection' not found.");
     builder.Services.AddDbContext<ApplicationContext>(options =>
         options.UseSqlite(connectionString));
+    //builder.Services.AddLettuceEncrypt();
 }
 else
 {
@@ -16,7 +17,20 @@ else
 
     builder.Services.AddDbContext<ApplicationContext>(options =>
         options.UseMySql(connectionString, ServerVersion.Parse(mysqlVersion)));
+    builder.Services.AddLettuceEncrypt();
 }
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("https://visingers.github.io");
+                      });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -25,6 +39,7 @@ builder.Services.AddHostedService<GitHubParserService>();
 var app = builder.Build();
 app.UseDefaultFiles();
 app.UseStaticFiles();
+app.UseCors(MyAllowSpecificOrigins);
 
 if (app.Environment.IsDevelopment())
 {

@@ -13,7 +13,7 @@ async function fetchUser() {
     const route = useRoute('/users/[user]')
 
     const userLogin = route.params.user
-    const response = await axios.get(`${import.meta.env.VITE_VISINGERS_API_BASE_URL}/api/Users/${userLogin}`)
+    const response = await axios.get(`${import.meta.env.VITE_VISINGERS_API_BASE_URL}/Users/${userLogin}`)
     data.value = response.data
     page.value++
   }

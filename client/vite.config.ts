@@ -1,8 +1,8 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import child_process from 'node:child_process'
-import process, { env } from 'node:process'
-import { defineConfig, loadEnv } from 'vite'
+import { env } from 'node:process'
+import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import generateSitemap from 'vite-ssg-sitemap'
 import Layouts from 'vite-plugin-vue-layouts'
@@ -49,10 +49,9 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
   }
 }
 
-const viteEnv = loadEnv(
-  'all',
-  process.cwd(),
-)
+const target = env.ASPNETCORE_HTTPS_PORT
+  ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}`
+  : env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7105'
 
 export default defineConfig({
   resolve: {
@@ -195,7 +194,7 @@ export default defineConfig({
   server: {
     proxy: {
       '^/api/*': {
-        target: viteEnv.VITE_VISINGERS_API,
+        target,
         secure: false,
       },
     },
