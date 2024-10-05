@@ -65,6 +65,9 @@ async function fetchSingers() {
       })
     }
 
+    const testResponse = await fetch(`https://visingers-api.megageorgio.ru/${requestUrl}`)
+    alert(testResponse?.json() ?? 'no data')
+
     const response = await axios.get(requestUrl, {
       baseURL: 'https://visingers-api.megageorgio.ru/',
     })
