@@ -6,7 +6,7 @@ ViSingers is a virtual singers catalog. You can add your singer here by creating
 - [Singer Template](https://github.com/ViSingers/singer-template) - Contains everything
 - [Group Template](https://github.com/ViSingers/group-template) - Not implemented yet
 
-## How to add singer
+## How to add your singer
 https://github.com/user-attachments/assets/bbc6d481-06f4-4973-a7c7-82487200e5d3
 - Select singer template, press "Use this template"
 - Fill readme
