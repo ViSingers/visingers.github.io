@@ -19,7 +19,7 @@ const { t } = useI18n()
           {{ t('info.creators.first-description') }}
         </p>
         <p>
-          Github: <a class="link" href="https://github.com/Megageorgio">{{ t('singer.siteLink') }}</a>
+          Github: <a class="link" href="http://github.com/Megageorgio">{{ t('singer.siteLink') }}</a>
         </p>
       </b-col>
       <b-col cols="12" md="auto" class="mb-md-0 mr-md-6">

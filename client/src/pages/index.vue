@@ -29,13 +29,13 @@ const translatedSortTypes = computed(() =>
 
 async function fetchData() {
   tags.value = (await axios.get(`api/tags`, {
-    baseURL: 'https://visingers-api.megageorgio.ru/',
+    baseURL: 'http://visingers-api.megageorgio.ru/',
   })).data
   types.value = (await axios.get(`api/voicebankTypes`, {
-    baseURL: 'https://visingers-api.megageorgio.ru/',
+    baseURL: 'http://visingers-api.megageorgio.ru/',
   })).data
   languages.value = (await axios.get(`api/voicebankLanguages`, {
-    baseURL: 'https://visingers-api.megageorgio.ru/',
+    baseURL: 'http://visingers-api.megageorgio.ru/',
   })).data
 }
 
@@ -66,7 +66,7 @@ async function fetchSingers() {
     }
 
     const response = await axios.get(requestUrl, {
-      baseURL: 'https://visingers-api.megageorgio.ru/',
+      baseURL: 'http://visingers-api.megageorgio.ru/',
     })
     if (response.data.items.length === 0) {
       finished.value = true
