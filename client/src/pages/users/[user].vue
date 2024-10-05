@@ -93,6 +93,7 @@ onMounted(fetchUser)
   transition:
     transform 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out;
+  font-weight: normal;
 }
 .stars-container {
   position: absolute;

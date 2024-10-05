@@ -9,8 +9,8 @@ button:
   search: Поиск
 placeholder:
   name: Имя вокалиста
-  languages: Языки войсбанков
-  types: Типы войсбанков
+  languages: Языки
+  types: Типы
   tags: Теги
 sort:
   popular: Популярные

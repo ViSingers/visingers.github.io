@@ -11,6 +11,7 @@ const page = ref(1)
 const loading = ref(false)
 const finished = ref(false)
 const searchQuery = ref('')
+const oldSearchQuery = ref('')
 const selectedTags = ref<string[]>([])
 const selectedTypes = ref<string[]>([])
 const selectedLanguages = ref<string[]>([])
@@ -83,6 +84,13 @@ function filterResults() {
   fetchSingers()
 }
 
+function filterResultsFromBlur() {
+  if (searchQuery.value !== oldSearchQuery.value) {
+    oldSearchQuery.value = searchQuery.value
+    filterResults()
+  }
+}
+
 const loadMoreRef = ref<HTMLElement | null>(null)
 useIntersectionObserver(
   loadMoreRef,
@@ -109,7 +117,7 @@ onMounted(() => {
         <b-form-input
           v-model="searchQuery"
           style="height: 40px"
-          :placeholder="`${t('placeholder.name')}`" class="me-2" @blur="filterResults" @keyup.enter="filterResults"
+          :placeholder="`${t('placeholder.name')}`" class="me-2" @blur="filterResultsFromBlur" @keyup.enter="filterResults"
         />
         <Multiselect
           v-model="selectedLanguages"
@@ -211,6 +219,7 @@ onMounted(() => {
   transition:
     transform 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out;
+  font-weight: normal;
 }
 .stars-container {
   position: absolute; /* Абсолютное позиционирование для блока со звездами */

@@ -9,8 +9,8 @@ button:
   search: Search
 placeholder:
   name: Singer name
-  languages: Voicebank languages
-  types: Voicebank types
+  languages: VB languages
+  types: VB types
   tags: Tags
 sort:
   popular: Popular

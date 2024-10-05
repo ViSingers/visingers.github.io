@@ -10,6 +10,15 @@ width: 100%;
 height: 225px;
 }
 
+.multiselect {
+  box-shadow: 0 0 0 3px #4ea6ea00 !important;
+}
+
+.is-selected,
+.is-pointed {
+  background: #4ea6ea !important;
+}
+
 @include color-mode(light) {
   body {
     background: rgb(249, 249, 249);
@@ -58,7 +67,6 @@ height: 225px;
   .multiselect-dropdown {
     background-color: #212529;
     border-color:rgb(73, 80, 87);
-    --vf-ring-color: #4ea6ea;
   }
 
 }

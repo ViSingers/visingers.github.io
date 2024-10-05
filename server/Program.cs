@@ -8,29 +8,28 @@ if (builder.Environment.IsDevelopment())
     var connectionString = builder.Configuration.GetConnectionString("SQLiteConnection") ?? throw new InvalidOperationException("Connection string 'SQLiteConnection' not found.");
     builder.Services.AddDbContext<ApplicationContext>(options =>
         options.UseSqlite(connectionString));
-    //builder.Services.AddLettuceEncrypt();
 }
 else
 {
     var connectionString = builder.Configuration.GetConnectionString("MySQLConnection") ?? throw new InvalidOperationException("Connection string 'MySQLConnection' not found.");
     var mysqlVersion = builder.Configuration.GetConnectionString("MySQLVersion") ?? throw new InvalidOperationException("'MySQLVersion' not found.");
-
     builder.Services.AddDbContext<ApplicationContext>(options =>
         options.UseMySql(connectionString, ServerVersion.Parse(mysqlVersion)));
-    builder.Services.AddLettuceEncrypt();
 }
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+var frontendUrl = builder.Configuration.GetValue<string>("FrontendUrl");
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       builder =>
                       {
-                          builder.WithOrigins("https://visingers.github.io");
+                          builder.WithOrigins(frontendUrl);
                       });
 });
-
+builder.Services.AddLettuceEncrypt();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
