@@ -193,12 +193,6 @@ export default defineConfig({
   },
 
   server: {
-    proxy: {
-      '^/api/*': {
-        target: viteEnv.VITE_VISINGERS_API,
-        secure: false,
-      },
-    },
     port: 5173,
     https: {
       key: fs.readFileSync(keyFilePath),
