@@ -13,7 +13,7 @@ https://github.com/user-attachments/assets/bbc6d481-06f4-4973-a7c7-82487200e5d3
 - Replace image.png
 - Add voicebanks to releases (release name should contain section name, zip file is required and mp3/wav samples are optional)
 - Add images to gallery directory (optional)
-- Add site website url (optional)
+- Add website url (optional)
 - Add "visingers" tag (you can also add other tags)
 - Wait ~1 minute and check the catalog
 
