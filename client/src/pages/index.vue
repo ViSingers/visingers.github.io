@@ -16,6 +16,7 @@ const selectedTags = ref<string[]>([])
 const selectedTypes = ref<string[]>([])
 const selectedLanguages = ref<string[]>([])
 const selectedSortType = ref<string>('popular')
+const showIfNoVoicebanks = ref(true)
 const tags = ref<string[]>([])
 const types = ref<string[]>([])
 const languages = ref<string[]>([])
@@ -58,6 +59,9 @@ async function fetchSingers() {
       selectedLanguages.value.forEach((lang) => {
         requestUrl += `&languages=${lang}`
       })
+    }
+    if (showIfNoVoicebanks.value) {
+      requestUrl += `&showIfNoVoicebanks=${showIfNoVoicebanks.value}`
     }
 
     const response = await axios.get(requestUrl)
@@ -113,118 +117,73 @@ onMounted(() => {
 <template>
   <b-container class="mt-3">
     <b-row class="mb-8">
-      <b-form class="d-flex align-items-center" inline>
-        <b-form-input
-          v-model="searchQuery"
-          style="height: 40px"
-          :placeholder="`${t('placeholder.name')}`" class="me-2" @blur="filterResultsFromBlur" @keyup.enter="filterResults"
-        />
-        <Multiselect
-          v-model="selectedLanguages"
-          :options="languages"
-          mode="tags"
-          :searchable="true"
-          :placeholder="`${t('placeholder.languages')}`"
-          class="languages-select me-2"
-          @update:model-value="filterResults"
-        />
-        <Multiselect
-          v-model="selectedTypes"
-          :options="types"
-          mode="tags"
-          :searchable="true"
-          :placeholder="`${t('placeholder.types')}`"
-          class="types-select me-2"
-          @update:model-value="filterResults"
-        />
-        <Multiselect
-          v-model="selectedTags"
-          :options="tags"
-          mode="tags"
-          :searchable="true"
-          :placeholder="`${t('placeholder.tags')}`"
-          class="tags-select me-2"
-          @update:model-value="filterResults"
-        />
-
-        <Multiselect
-          v-model="selectedSortType"
-          :options="translatedSortTypes"
-          :can-clear="false"
-          class="tags-select me-2"
-          label-prop="wfe"
-          @update:model-value="filterResults"
-        />
-      </b-form>
+      <b-button v-b-toggle.collapse-1 variant="outline-secondary" class="m-2">
+        {{ t('button.search') }}
+      </b-button>
+      <b-collapse id="collapse-1">
+        <b-card>
+          <b-form class="d-lg-flex" inline>
+            <Multiselect
+              v-model="selectedLanguages"
+              :options="languages"
+              mode="tags"
+              :searchable="true"
+              :placeholder="`${t('filters.languages')}`"
+              class="languages-select mb-2 me-2"
+              @update:model-value="filterResults"
+            />
+            <Multiselect
+              v-model="selectedTypes"
+              :options="types"
+              mode="tags"
+              :searchable="true"
+              :placeholder="`${t('filters.types')}`"
+              class="types-select mb-2 me-2"
+              @update:model-value="filterResults"
+            />
+            <Multiselect
+              v-model="selectedTags"
+              :options="tags"
+              mode="tags"
+              :searchable="true"
+              :placeholder="`${t('filters.tags')}`"
+              class="tags-select mb-2 me-2"
+              @update:model-value="filterResults"
+            />
+          </b-form>
+          <b-form class="d-lg-flex" inline>
+            <b-form-input
+              v-model="searchQuery"
+              class="mb-2 me-2 h-auto"
+              :placeholder="`${t('filters.name')}`" @blur="filterResultsFromBlur" @keyup.enter="filterResults"
+            />
+            <Multiselect
+              v-model="selectedSortType"
+              :options="translatedSortTypes"
+              :can-clear="false"
+              class="tags-select mb-2 me-2"
+              label-prop="wfe"
+              @update:model-value="filterResults"
+            />
+            <b-form-group class="align-items-center d-flex mb-2 me-2" style="min-width: 250px;">
+              <b-form-checkbox
+                v-model="showIfNoVoicebanks"
+                switch
+                inline
+              >
+                {{ t('filters.show-if-no-voicebanks') }}
+              </b-form-checkbox>
+            </b-form-group>
+          </b-form>
+        </b-card>
+      </b-collapse>
     </b-row>
     <b-row class="mb-8">
-      <b-col
-        v-for="singer in singers"
-        :key="singer.repositoryName"
-        class="col-md-3 mb-3"
-      >
-        <router-link :to="{ path: `/${singer.creatorLogin}/${singer.repositoryName}` }" class="text-decoration-none">
-          <b-card
-            :title="singer.name"
-            :img-src="singer.avatarUrl"
-            img-height="200px"
-            img-width="200px"
-            img-alt="Avatar"
-            img-top
-            class="singer-card h-100 shadow-md"
-          >
-            <b-card-subtitle>
-              <router-link :to="{ path: `/users/${singer.creatorLogin}` }" class="link">
-                {{ singer.creatorName }}
-              </router-link>
-            </b-card-subtitle>
-            <b-card-body class="card-tags">
-              <b-card-text>
-                <b-badge v-for="voicebankLanguage in singer.voicebankLanguages" :key="voicebankLanguage" class="rounded-pill badge-language">
-                  {{ voicebankLanguage }}
-                </b-badge>
-                <b-badge v-for="voicebankType in singer.voicebankTypes" :key="voicebankType" class="rounded-pill badge-voicebank">
-                  {{ voicebankType }}
-                </b-badge>
-                <b-badge v-for="tag in singer.tags" :key="tag" class="rounded-pill">
-                  {{ tag }}
-                </b-badge>
-              </b-card-text>
-            </b-card-body>
-            <b-card-body>
-              <b-card-text class="stars-container">
-                <div class="d-flex align-items-center justify-content-end star-text">
-                  {{ singer.stars }} <span i-carbon-star-filled class="star-icon" />
-                </div>
-              </b-card-text>
-            </b-card-body>
-          </b-card>
-        </router-link>
-      </b-col>
+      <singers-list :singers="singers" />
     </b-row>
-    <div v-if="loading" class="mt-3 text-center">
+    <div v-if="loading" class="mb-2 mt-3 text-center">
       <b-spinner label="Loading..." />
     </div>
     <div ref="loadMoreRef" class="load-more-trigger" />
   </b-container>
 </template>
-
-<style src="@vueform/multiselect/themes/default.css"></style>
-
-<style scoped>
-.card-body {
-  padding: 0px;
-}
-
-.badge {
-  margin: 2px;
-}
-
-.badge-language {
-  background-color: #ff679d !important;
-}
-
-.badge-voicebank {
-  background-color: #4ea6ea !important;
-}
-</style>

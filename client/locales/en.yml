@@ -4,14 +4,15 @@ nav:
   info: Information
 button:
   back: Back
-  toggle_dark: Toggle mode
+  toggle_dark: Toggle theme
   toggle_langs: Toggle language
   search: Search
-placeholder:
+filters:
   name: Singer name
   languages: VB languages
   types: VB types
   tags: Tags
+  show-if-no-voicebanks: Show if no voicebanks
 sort:
   popular: Popular
   voicebank-count: Voicebank count
@@ -22,6 +23,7 @@ singer:
   author: Published by
   site: Website
   siteLink: Link
+  repository: Repository
   information: General Information
   voicebanks: Voicebanks
   samples: Samples
@@ -37,6 +39,12 @@ info:
     title: How to add your singer
     first-name: Normal guide
     second-name: BEST GUIDE EVER!!!
+  rules:
+    title: Rules
+    no-prohibited-content: Do not post offensive or political content, as well as anything prohibited in your country.
+    no-disinformation: Do not add information about voicebanks that have not been released or features that are not yet implemented. The zip archive included in the release should contain only the voicebank of the corresponding type.
+    no-repository-spam: Do not create multiple identical or meaningless repositories with the "visingers" tag.
+    no-tags-spam: Do not add tags that are not related to voicebanks/singers.
 user: User
 in-development: In development
 not-found: Not found

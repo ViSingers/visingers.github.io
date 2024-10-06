@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Octokit;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using mk.profanity;
 using ViSingers.Server.Models;
 using User = ViSingers.Server.Models.User;
+
 namespace ViSingers.Server.Services;
 
 public partial class GitHubParserService : IHostedService, IDisposable
@@ -16,6 +18,7 @@ public partial class GitHubParserService : IHostedService, IDisposable
     private readonly GitHubClient _gitHubClient;
     private readonly GraphQLHttpClient _graphqlClient;
     private readonly ApplicationContext _context;
+    private readonly ProfanityFilter _profanityFilter;
 
     private readonly static Regex YoutubeRegex = new Regex(@"(?:https?:\/\/)?(?:www\.)?(?:(?:youtube\.com\/watch\?v=)|(?:youtu\.be\/))([a-zA-Z0-9_-]{11})", RegexOptions.Compiled);
     private readonly static string AppName = "ViSingersBot";
@@ -56,6 +59,7 @@ public partial class GitHubParserService : IHostedService, IDisposable
         _graphqlClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(
             new System.Net.Http.Headers.ProductInfoHeaderValue(AppName, "1.0"));
         _gitHubClient.Credentials = tokenAuth;
+        _profanityFilter = new ProfanityFilter();
         _context = factory.CreateScope().ServiceProvider.GetRequiredService<ApplicationContext>();
     }
 
@@ -185,7 +189,8 @@ public partial class GitHubParserService : IHostedService, IDisposable
                                 user = new User
                                 {
                                     Login = repo.Owner.Login,
-                                    Name = githubUserInfo.Name
+                                    Name = githubUserInfo.Name,
+                                    IsBlocked = false
                                 };
                             }
 
@@ -225,7 +230,7 @@ public partial class GitHubParserService : IHostedService, IDisposable
                                 continue;
                             }
 
-                            var readmeRows = readmeFile.Text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                            var readmeRows = _profanityFilter.CensorText(readmeFile.Text).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                             var sections = GetSections(readmeRows);
                             var descriptionSection = sections.FirstOrDefault();
 
@@ -250,13 +255,25 @@ public partial class GitHubParserService : IHostedService, IDisposable
                                 {
                                     continue;
                                 }
+
                                 var lastRelease = releases
                                     .Where(release => release.Name.StartsWith(voicebankSection.Name))
                                     .OrderBy(release => new string(release.Name.Replace(voicebankSection.Name, string.Empty).Where(char.IsDigit).ToArray()))
                                     .FirstOrDefault();
                                 if (lastRelease == null)
                                 {
-                                    continue;
+                                    if (voicebankSections.Count == 1)
+                                    {
+                                        lastRelease = releases.OrderBy(release => new string(release.Name.Where(char.IsDigit).ToArray())).FirstOrDefault();
+                                        if (lastRelease == null)
+                                        {
+                                            continue;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
                                 }
                                 var releaseArchive = lastRelease.Assets.FirstOrDefault(asset => asset.Name.EndsWith(".zip"));
                                 if (releaseArchive == null)
@@ -271,7 +288,12 @@ public partial class GitHubParserService : IHostedService, IDisposable
                             var description = string.Join('\n', descriptionSection.Content.Where(row => !row.StartsWith('!') && !row.StartsWith('[')));
                             var generalInfo = generalInfoSection?.Content.Where(row => row.StartsWith('-') && row.Contains(':')).Select(row => row.Trim('-', ' ')).ToList() ?? [];
 
-                            var parsedTags = repo.Topics.Where(topic => topic.ToLower() != "visingers").Select(topic => topic.ToLower().Replace("visingers-", string.Empty));
+                            var parsedTags = repo.Topics
+                                .Where(topic => topic.ToLower() != "visingers")
+                                .Select(topic => topic.ToLower().Replace("visingers-", string.Empty))
+                                .Where(topic => !voicebankLanguages.Any(lang => lang.Name == topic || lang.FullName == topic) && !voicebankTypes.Any(type => type.Name == topic) && topic != user.Login.ToLower() && topic != user.Name?.ToLower())
+                                .Distinct();
+
                             var tags = _context.Tags.Where(tag => parsedTags.Contains(tag.Name)).ToList();
                             tags.AddRange(parsedTags.Where(tag => !tags.Any(foundTag => foundTag.Name == tag)).Select(tag => new Tag { Name = tag }));
 
@@ -317,7 +339,7 @@ public partial class GitHubParserService : IHostedService, IDisposable
                                     continue;
                                 }
 
-                                var translationReadmeRows = file.Text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                                var translationReadmeRows = _profanityFilter.CensorText(file.Text).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                                 var translationSections = GetSections(translationReadmeRows);
 
                                 var translationDescriptionSection = translationSections.FirstOrDefault();
@@ -361,6 +383,7 @@ public partial class GitHubParserService : IHostedService, IDisposable
 
                             }
 
+                            await _context.SaveChangesAsync();
                         }
                     }
 
@@ -369,8 +392,6 @@ public partial class GitHubParserService : IHostedService, IDisposable
                         _logger.LogError(ex, "Error occurred while parsing GitHub repository.");
                     }
                 }
-
-                await _context.Tags.Where(tag => tag.Singers.Count == 0).ExecuteDeleteAsync();
 
                 await _context.SaveChangesAsync();
             }

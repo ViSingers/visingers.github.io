@@ -56,11 +56,11 @@ const images = computed(() => {
   </div>
 
   <b-container v-else class="bg-background text-foreground p-6">
-    <b-row class="flex-column flex-md-row align-items-center mb-8">
+    <b-row class="flex-column flex-md-row mb-8">
       <b-col cols="12" md="auto" class="mb-md-0 mr-md-6 mb-4">
-        <b-img :src="data.avatarUrl" alt="Avatar" rounded="circle" class="mb-md-0 avatar object-fit-cover mb-4" />
+        <b-img lazy :src="data.avatarUrl" alt="Avatar" rounded="circle" class="mb-md-0 avatar object-fit-cover mb-4" />
       </b-col>
-      <b-col>
+      <b-col class="align-items-center">
         <h1 class="display-4 font-weight-bold mb-2">
           {{ data.name }}
         </h1>
@@ -74,6 +74,9 @@ const images = computed(() => {
         </p>
         <p v-if="data.siteUrl">
           {{ t('singer.site') }}: <a class="link" :href="data.siteUrl">{{ t('singer.siteLink') }}</a>
+        </p>
+        <p>
+          {{ t('singer.repository') }}: <a class="link" :href="`https://github.com/${data.creatorLogin}/${data.repositoryName}`">{{ t('singer.siteLink') }}</a>
         </p>
       </b-col>
     </b-row>
@@ -146,7 +149,7 @@ const images = computed(() => {
       </h3>
       <masonry-wall :items="data.imageUrls" :column-width="300" :gap="16">
         <template #default="{ item, index }">
-          <b-img class="pic card-shadow rounded-3" :src="`${item as string}`" @click="() => showImg(index)" />
+          <b-img lazy class="pic card-shadow rounded-3" :src="`${item as string}`" @click="() => showImg(index)" />
         </template>
       </masonry-wall>
     </b-row>
@@ -154,10 +157,6 @@ const images = computed(() => {
 </template>
 
 <style scoped>
-.carousel-inner img {
-  width: 100%;
-  height: auto;
-}
 .badge {
   margin: 2px;
   padding: 5px 15px;

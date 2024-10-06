@@ -24,7 +24,7 @@ public class TagsController : Controller
     [HttpGet]
     public async Task<ActionResult<IEnumerable<string>>> Get()
     {
-        var tags = await _context.Tags.Select(tag => tag.Name).ToListAsync();
+        var tags = await _context.Tags.Where(tag => tag.Singers.Count != 0).Select(tag => tag.Name).ToListAsync();
 
         return Ok(tags);
     }

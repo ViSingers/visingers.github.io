@@ -1,7 +1,7 @@
 {
   "name": "visigners",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "packageManager": "pnpm@9.8.0",
   "scripts": {
@@ -38,10 +38,7 @@
     "vue-demi": "^0.14.10",
     "vue-easy-lightbox": "^1.19.0",
     "vue-i18n": "^9.14.0",
-    "vue-multiselect": "^3.1.0",
-    "vue-router": "^4.4.3",
-    "vue3-audio-player": "^1.0.7",
-    "vue3-wave-audio-player": "^2.0.3"
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.1",

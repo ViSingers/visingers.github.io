@@ -32,12 +32,13 @@ function toggleDark() {
 </script>
 
 <template>
-  <b-navbar class="sticky-top" expand="lg">
+  <b-navbar class="sticky-top" expand="lg" toggleable="md">
     <b-navbar-brand to="/">
       <img
         src="/logo.png"
         alt="Logo"
-        width="150"
+        width="150px"
+        style="min-width: 150px;"
         class="d-inline-block align-top"
       >
     </b-navbar-brand>

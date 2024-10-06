@@ -5,12 +5,14 @@ using ViSingers.Server.Services;
 var builder = WebApplication.CreateBuilder(args);
 if (builder.Environment.IsDevelopment())
 {
+    Console.WriteLine("Running in Development mode");
     var connectionString = builder.Configuration.GetConnectionString("SQLiteConnection") ?? throw new InvalidOperationException("Connection string 'SQLiteConnection' not found.");
     builder.Services.AddDbContext<ApplicationContext>(options =>
         options.UseSqlite(connectionString));
 }
 else
 {
+    Console.WriteLine("Running in Production mode");
     var connectionString = builder.Configuration.GetConnectionString("MySQLConnection") ?? throw new InvalidOperationException("Connection string 'MySQLConnection' not found.");
     var mysqlVersion = builder.Configuration.GetConnectionString("MySQLVersion") ?? throw new InvalidOperationException("'MySQLVersion' not found.");
     builder.Services.AddDbContext<ApplicationContext>(options =>

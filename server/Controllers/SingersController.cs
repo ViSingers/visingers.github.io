@@ -61,7 +61,7 @@ public class SingersController : Controller
     [HttpGet]
     public async Task<ActionResult<IEnumerable<SingerView>>> Get(string name = null,
     [FromQuery] List<string>? tags = null, [FromQuery] List<string>? types = null, [FromQuery] List<string>? languages = null,
-    string sort = "popular", int page = 1, int count = 40)
+    [FromQuery] bool showIfNoVoicebanks = true, string sort = "popular", int page = 1, int count = 40)
     {
         if (page < 1 || page < 1 || page > 100)
         {
@@ -81,6 +81,13 @@ public class SingersController : Controller
             .Include(singer => singer.Voicebanks)
             .ThenInclude(voicebank => voicebank.Languages)
         .AsQueryable();
+
+        singers = singers.Where(s => !s.Creator.IsBlocked);
+
+        if (!showIfNoVoicebanks)
+        {
+            singers = singers.Where(s => s.Voicebanks.Count != 0);
+        }
 
         if (!string.IsNullOrEmpty(name))
         {

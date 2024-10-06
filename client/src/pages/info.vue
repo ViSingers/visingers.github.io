@@ -7,65 +7,86 @@ const { t } = useI18n()
     <h1 class="display-4 mb-10">
       {{ t('info.creators.title') }}
     </h1>
-    <b-row class="flex-column flex-md-row align-items-center mb-16">
-      <b-col cols="12" md="auto" class="mb-md-0 mr-md-6">
-        <b-img src="images/avatar1.jpg" alt="Avatar" rounded="circle" class="mb-md-0 avatar object-fit-cover mb-4" />
+    <b-row class="flex-column flex-md-row align-items-center" mb-4>
+      <b-col cols="12" lg="6" mb-8>
+        <b-row>
+          <b-col cols="12" md="auto" class="mb-md-0 mr-md-6">
+            <b-img lazy src="images/avatar1.jpg" alt="Avatar" rounded="circle" class="mb-md-0 avatar object-fit-cover mb-4" />
+          </b-col>
+          <b-col>
+            <h1 class="display-4 mb-2">
+              msan
+            </h1>
+            <p class="text-muted-foreground">
+              {{ t('info.creators.first-description') }}
+            </p>
+            <p>
+              Github: <a class="link" href="http://github.com/Megageorgio">{{ t('singer.siteLink') }}</a>
+            </p>
+          </b-col>
+        </b-row>
       </b-col>
-      <b-col>
-        <h1 class="display-4 mb-2">
-          msan
-        </h1>
-        <p class="text-muted-foreground">
-          {{ t('info.creators.first-description') }}
-        </p>
-        <p>
-          Github: <a class="link" href="http://github.com/Megageorgio">{{ t('singer.siteLink') }}</a>
-        </p>
-      </b-col>
-      <b-col cols="12" md="auto" class="mb-md-0 mr-md-6">
-        <b-img src="images/avatar2.jpg" alt="Avatar" rounded="circle" class="mb-md-0 avatar object-fit-cover mb-4" />
-      </b-col>
-      <b-col>
-        <h1 class="display-4 mb-2">
-          HHS_kt
-        </h1>
-        <p class="text-muted-foreground">
-          {{ t('info.creators.second-description') }}
-        </p>
-        <p>
-          Youtube: <a class="link" href="https://www.youtube.com/@HHS_kt">{{ t('singer.siteLink') }}</a>
-        </p>
+      <b-col cols="12" lg="6" mb-8>
+        <b-row>
+          <b-col cols="12" md="auto" class="mb-md-0 mr-md-6">
+            <b-img lazy src="images/avatar2.jpg" alt="Avatar" rounded="circle" class="mb-md-0 avatar object-fit-cover mb-4" />
+          </b-col>
+          <b-col>
+            <h1 class="display-4 mb-2">
+              HHS_kt
+            </h1>
+            <p class="text-muted-foreground">
+              {{ t('info.creators.second-description') }}
+            </p>
+            <p>
+              Youtube: <a class="link" href="https://www.youtube.com/@HHS_kt">{{ t('singer.siteLink') }}</a>
+            </p>
+          </b-col>
+        </b-row>
       </b-col>
     </b-row>
 
-    <!-- Видео с YouTube -->
+    <b-row class="mb-8">
+      <h2 class="display-4 mb-4">
+        {{ t('info.rules.title') }}
+      </h2>
+      <b-list-group>
+        <b-list-group-item>
+          {{ t('info.rules.no-prohibited-content') }}
+        </b-list-group-item>
+        <b-list-group-item>
+          {{ t('info.rules.no-disinformation') }}
+        </b-list-group-item>
+        <b-list-group-item>
+          {{ t('info.rules.no-repository-spam') }}
+        </b-list-group-item>
+        <b-list-group-item>
+          {{ t('info.rules.no-tags-spam') }}
+        </b-list-group-item>
+      </b-list-group>
+    </b-row>
+
     <b-row class="mb-4">
       <h2 class="display-4 mb-10">
         {{ t('info.videos.title') }}
       </h2>
-      <b-col cols="12" md="6">
+      <b-col lg="6" cols-12 mb-8>
         <h4>{{ t('info.videos.first-name') }}</h4>
         <iframe
           class="card-shadow rounded-4"
           width="100%"
           height="315"
           src="https://www.youtube.com/embed/i1hXV4UWMyU"
-          title="YouTube видео плеер"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         />
       </b-col>
-      <b-col cols="12" md="6" class="mb-4">
+      <b-col lg="6" cols-12 mb-8>
         <h4>{{ t('info.videos.second-name') }}</h4>
         <iframe
           class="card-shadow rounded-4"
           width="100%"
           height="315"
           src="https://youtube.com/embed/qnUS5jaFu8c"
-          title="YouTube видео плеер"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         />
       </b-col>

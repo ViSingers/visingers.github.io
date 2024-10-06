@@ -62,7 +62,7 @@ public class UsersController : Controller
             .ThenInclude(voicebank => voicebank.Languages)
             .FirstOrDefaultAsync(u => u.Login == userLogin);
 
-        if (user == null)
+        if (user == null || user.IsBlocked)
             return NotFound();
 
         return new ObjectResult(MapUserToView(user));
