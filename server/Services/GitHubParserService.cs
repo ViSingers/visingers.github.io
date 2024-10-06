@@ -291,7 +291,7 @@ public partial class GitHubParserService : IHostedService, IDisposable
                             var parsedTags = repo.Topics
                                 .Where(topic => topic.ToLower() != "visingers")
                                 .Select(topic => topic.ToLower().Replace("visingers-", string.Empty))
-                                .Where(topic => !voicebankLanguages.Any(lang => lang.Name == topic || lang.FullName == topic) && !voicebankTypes.Any(type => type.Name == topic) && topic != user.Login.ToLower() && topic != user.Name?.ToLower())
+                                .Where(topic => !voicebankLanguages.Any(lang => lang.Name == topic || lang.FullName == topic) && !voicebankTypes.Any(type => type.Name == topic) && topic != user.Login.ToLower() && topic != user.Name?.ToLower() && topic != descriptionSection.Name.ToLower())
                                 .Distinct();
 
                             var tags = _context.Tags.Where(tag => parsedTags.Contains(tag.Name)).ToList();
