@@ -117,7 +117,7 @@ onMounted(() => {
 <template>
   <b-container class="mt-3">
     <b-row class="mb-8">
-      <b-button v-b-toggle.collapse-1 variant="outline-secondary" class="m-2">
+      <b-button v-b-toggle.collapse-1 variant="outline-secondary" class="mb-2">
         {{ t('button.search') }}
       </b-button>
       <b-collapse id="collapse-1">
