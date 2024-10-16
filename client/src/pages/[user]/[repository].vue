@@ -40,6 +40,7 @@ function handleHide() {
 const currentLanguageDetails = computed(() => {
   const details = data.value.details[settingsStore.language] || data.value.details.en
   details.generalInfoTable = details.generalInfo.map((row: string) => row.split(':'))
+  details.termsOfUseTable = details.termsOfUse.map((row: string) => row.split(':'))
   return details
 })
 
@@ -81,12 +82,21 @@ const images = computed(() => {
       </b-col>
     </b-row>
 
-    <b-row class="mb-8">
+    <b-row v-if="data.generalInfoTable.length !== 0" class="mb-8">
       <h3>
         {{ t("singer.information") }}
       </h3>
       <div class="overflow-x-auto">
         <b-table :items="currentLanguageDetails.generalInfoTable" thead-class="d-none" striped hover />
+      </div>
+    </b-row>
+
+    <b-row v-if="data.termsOfUseTable.length !== 0" class="mb-8">
+      <h3>
+        {{ t("singer.terms-of-use") }}
+      </h3>
+      <div class="overflow-x-auto">
+        <b-table :items="currentLanguageDetails.termsOfUseTable" thead-class="d-none" striped hover />
       </div>
     </b-row>
 

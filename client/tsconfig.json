@@ -17,7 +17,8 @@
       "vite-plugin-pwa/client",
       "unplugin-vue-macros/macros-global",
       "unplugin-vue-router/client",
-      "vidstack/vue"
+      "vidstack/vue",
+      "@types/wicg-file-system-access"
     ],
     "allowJs": true,
     "strict": true,

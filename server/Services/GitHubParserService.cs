@@ -131,7 +131,12 @@ public partial class GitHubParserService : IHostedService, IDisposable
 
     private async Task ParseGitHubRepos()
     {
-        using (var scope = _serviceProvider.CreateScope())
+        var videosSectionName = "videos";
+        var groupsSectionName = "groups";
+        var termsOfUseSectionName = "terms of use";
+        var sectionNames = new List<string> { videosSectionName, groupsSectionName, termsOfUseSectionName };
+
+        ; using (var scope = _serviceProvider.CreateScope())
         {
             try
             {
@@ -240,9 +245,11 @@ public partial class GitHubParserService : IHostedService, IDisposable
                             }
 
                             var generalInfoSection = sections.Skip(1).FirstOrDefault();
-                            var groupsSection = sections.FirstOrDefault(section => section.Name.ToLower() == "groups");
-                            var videosSection = sections.FirstOrDefault(section => section.Name.ToLower() == "videos");
-                            var voicebankSections = sections.Skip(2).Where(section => section.Name.ToLower() != "groups" && section.Name.ToLower() != "videos").ToList();
+                            var groupsSection = sections.FirstOrDefault(section => section.Name.ToLower() == groupsSectionName);
+                            var videosSection = sections.FirstOrDefault(section => section.Name.ToLower() == videosSectionName);
+                            var termsOfUseSection = sections.FirstOrDefault(section => section.Name.ToLower() == termsOfUseSectionName);
+                            var termsOfUseSectionIndex = termsOfUseSection == null ? -1 : sections.IndexOf(termsOfUseSection);
+                            var voicebankSections = sections.Skip(2).Where(section => !sectionNames.Contains(section.Name.ToLower())).ToList();
                             var voicebanks = new List<Voicebank>();
                             foreach (var voicebankSection in voicebankSections)
                             {
@@ -287,11 +294,18 @@ public partial class GitHubParserService : IHostedService, IDisposable
 
                             var description = string.Join('\n', descriptionSection.Content.Where(row => !row.StartsWith('!') && !row.StartsWith('[')));
                             var generalInfo = generalInfoSection?.Content.Where(row => row.StartsWith('-') && row.Contains(':')).Select(row => row.Trim('-', ' ')).ToList() ?? [];
+                            var termsOfUse = termsOfUseSection?.Content.Where(row => row.StartsWith('-') && row.Contains(':')).Select(row => row.Trim('-', ' ')).ToList() ?? [];
 
                             var parsedTags = repo.Topics
                                 .Where(topic => topic.ToLower() != "visingers")
                                 .Select(topic => topic.ToLower().Replace("visingers-", string.Empty))
-                                .Where(topic => !voicebankLanguages.Any(lang => lang.Name == topic || lang.FullName == topic) && !voicebankTypes.Any(type => type.Name == topic) && topic != user.Login.ToLower() && topic != user.Name?.ToLower() && topic != descriptionSection.Name.ToLower())
+                                .Where(topic =>
+                                    !voicebankLanguages.Any(lang => lang.Name == topic || lang.FullName == topic)
+                                    && !voicebankTypes.Any(type => type.Name == topic)
+                                    && topic != user.Login.ToLower()
+                                    && topic != user.Name?.ToLower()
+                                    && topic != descriptionSection.Name.ToLower()
+                                    && !descriptionSection.Name.ToLower().Split().Contains(topic))
                                 .Distinct();
 
                             var tags = _context.Tags.Where(tag => parsedTags.Contains(tag.Name)).ToList();
@@ -320,7 +334,7 @@ public partial class GitHubParserService : IHostedService, IDisposable
                                 RepositoryName = repo.Name,
                                 Name = descriptionSection.Name,
                                 SiteUrl = repo.Homepage,
-                                Details = { { "en", new SingerDetails { Description = description, GeneralInfo = generalInfo } } },
+                                Details = { { "en", new SingerDetails { Description = description, GeneralInfo = generalInfo, TermsOfUse = termsOfUse } } },
                                 Creator = user,
                                 UpdatedAt = updatedAt.Value,
                                 CreatedAt = repo.CreatedAt,
@@ -350,12 +364,13 @@ public partial class GitHubParserService : IHostedService, IDisposable
                                 }
 
                                 var translationGeneralInfoSection = translationSections.Skip(1).FirstOrDefault();
-
+                                var translationTermsOfUseSection = termsOfUseSectionIndex == -1 ? null : translationSections[termsOfUseSectionIndex];
 
                                 var translatedDescription = string.Join('\n', translationDescriptionSection.Content.Where(row => !row.StartsWith('!') && !row.StartsWith('[')));
                                 var translatedGeneralInfo = translationGeneralInfoSection?.Content.Where(row => row.StartsWith('-') && row.Contains(':')).Select(row => row.Trim('-', ' ')).ToList() ?? [];
+                                var translatedTermsOfUse = translationTermsOfUseSection?.Content.Where(row => row.StartsWith('-') && row.Contains(':')).Select(row => row.Trim('-', ' ')).ToList() ?? [];
 
-                                singer.Details[fileNameArr[1]] = new SingerDetails { Description = translatedDescription, GeneralInfo = translatedGeneralInfo };
+                                singer.Details[fileNameArr[1]] = new SingerDetails { Description = translatedDescription, GeneralInfo = translatedGeneralInfo, TermsOfUse = translatedTermsOfUse };
                                 foreach (var voicebank in singer.Voicebanks)
                                 {
                                     var voicebankSection = translationSections.FirstOrDefault(section => section.Name.ToLower() == voicebank.Name.ToLower());

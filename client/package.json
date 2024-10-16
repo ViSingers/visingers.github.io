@@ -19,6 +19,7 @@
     "sizecheck": "npx vite-bundle-visualizer"
   },
   "dependencies": {
+    "@types/wicg-file-system-access": "^2023.10.5",
     "@unhead/vue": "^1.10.0",
     "@unocss/reset": "^0.62.2",
     "@vueform/multiselect": "^2.6.10",
@@ -28,6 +29,8 @@
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "bootstrap-vue-next": "^0.24.18",
+    "idb-keyval": "^6.2.1",
+    "jszip": "^3.10.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.2.2",
     "pinia-plugin-persistedstate": "^4.0.2",

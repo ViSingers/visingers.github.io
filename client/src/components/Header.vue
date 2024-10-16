@@ -29,6 +29,11 @@ function toggleDark() {
   mode.value = mode.value === 'dark' ? 'light' : 'dark'
   settingsStore.toggleTheme()
 }
+
+function isStandalone() {
+  return true
+  return window.matchMedia('(display-mode: standalone)').matches
+}
 </script>
 
 <template>
@@ -47,6 +52,9 @@ function toggleDark() {
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
+        <b-nav-item v-if="isStandalone()" to="/voicebanks">
+          {{ t('nav.voicebanks') }}
+        </b-nav-item>
         <b-nav-item to="/">
           {{ t('nav.singers') }}
         </b-nav-item>

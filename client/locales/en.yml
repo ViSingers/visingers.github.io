@@ -1,4 +1,5 @@
 nav:
+  voicebanks: My voicebanks
   singers: Singers
   groups: Groups
   info: Information
@@ -25,6 +26,7 @@ singer:
   siteLink: Link
   repository: Repository
   information: General Information
+  terms-of-use: Terms of Use
   voicebanks: Voicebanks
   samples: Samples
   gallery: Gallery

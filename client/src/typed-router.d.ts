@@ -24,5 +24,6 @@ declare module 'vue-router/auto-routes' {
     '/groups/': RouteRecordInfo<'/groups/', '/groups', Record<never, never>, Record<never, never>>,
     '/info': RouteRecordInfo<'/info', '/info', Record<never, never>, Record<never, never>>,
     '/users/[user]': RouteRecordInfo<'/users/[user]', '/users/:user', { user: ParamValue<true> }, { user: ParamValue<false> }>,
+    '/voicebanks': RouteRecordInfo<'/voicebanks', '/voicebanks', Record<never, never>, Record<never, never>>,
   }
 }

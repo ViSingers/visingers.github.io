@@ -1,4 +1,5 @@
 nav:
+  voicebanks: Мои войсбанки
   singers: Вокалисты
   groups: Группы
   info: Информация
@@ -25,6 +26,7 @@ singer:
   siteLink: Ссылка
   repository: Репозиторий
   information: Основная информация
+  terms-of-use: Условия использования
   voicebanks: Войсбанки
   samples: Примеры
   gallery: Галерея
