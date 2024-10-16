@@ -1,0 +1,52 @@
+nav:
+  voicebanks: 私のボイスバンク
+  singers: 歌手
+  groups: グループ
+  info: 情報
+button:
+  back: 戻る
+  toggle_dark: テーマ切り替え
+  toggle_langs: 言語切り替え
+  search: 検索
+filters:
+  name: 歌手名
+  languages: ボイスバンクの言語
+  types: ボイスバンクの種類
+  tags: タグ
+  show-if-no-voicebanks: ボイスバンクがない場合に表示
+sort:
+  popular: 人気
+  voicebank-count: ボイスバンク数
+  recently-updated: 最近更新
+  new: 新しい
+  old: 古い
+singer:
+  author: 公開者
+  site: ウェブサイト
+  siteLink: リンク
+  repository: リポジトリ
+  information: 一般情報
+  terms-of-use: 利用規約
+  voicebanks: ボイスバンク
+  samples: サンプル
+  gallery: ギャラリー
+  videos: ビデオ
+  download: ダウンロード
+info:
+  creators:
+    title: 制作
+    first-description: バックエンド、フロントエンド開発
+    second-description: テスト、デザイン、サイト機能のアイデア
+  videos:
+    title: 歌手の追加方法
+    first-name: 通常ガイド
+    second-name: 最高のガイド
+  rules:
+    title: ルール
+    no-prohibited-content: 攻撃的または政治的なコンテンツ、またはあなたの国で禁止されているものを投稿しないでください。
+    no-disinformation: 未リリースのボイスバンクやまだ実装されていない機能に関する情報を追加しないでください。リリースに含まれるzipアーカイブには、対応するタイプのボイスバンクのみを含めてください。
+    no-repository-spam: 「visingers」タグを使って複数の同一または無意味なリポジトリを作成しないでください。
+    no-tags-spam: ボイスバンク/歌手に関連しないタグを追加しないでください。
+user: ユーザー
+in-development: 開発中
+not-found: 見つかりませんでした
