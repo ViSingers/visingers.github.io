@@ -39,8 +39,8 @@ function handleHide() {
 
 const currentLanguageDetails = computed(() => {
   const details = data.value.details[settingsStore.language] || data.value.details.en
-  details.generalInfoTable = details.generalInfo.map((row: string) => row.split(':'))
-  details.termsOfUseTable = details.termsOfUse.map((row: string) => row.split(':'))
+  details.generalInfoTable = details.generalInfo?.map((row: string) => row.split(':')) ?? []
+  details.termsOfUseTable = details.termsOfUse?.map((row: string) => row.split(':')) ?? []
   return details
 })
 

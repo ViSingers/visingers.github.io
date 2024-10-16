@@ -31,7 +31,6 @@ function toggleDark() {
 }
 
 function isStandalone() {
-  return true
   return window.matchMedia('(display-mode: standalone)').matches
 }
 </script>
