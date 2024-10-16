@@ -82,7 +82,7 @@ const images = computed(() => {
       </b-col>
     </b-row>
 
-    <b-row v-if="data.generalInfoTable.length !== 0" class="mb-8">
+    <b-row v-if="currentLanguageDetails.generalInfoTable.length !== 0" class="mb-8">
       <h3>
         {{ t("singer.information") }}
       </h3>
@@ -91,7 +91,7 @@ const images = computed(() => {
       </div>
     </b-row>
 
-    <b-row v-if="data.termsOfUseTable.length !== 0" class="mb-8">
+    <b-row v-if="currentLanguageDetails.termsOfUseTable.length !== 0" class="mb-8">
       <h3>
         {{ t("singer.terms-of-use") }}
       </h3>
