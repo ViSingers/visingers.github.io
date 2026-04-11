@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "voicebanks": "マイボイスバンク",
+    "singers": "ボーカリスト",
+    "groups": "グループ",
+    "info": "情報"
+  },
+  "button": {
+    "back": "戻る",
+    "toggle_dark": "テーマを切り替え",
+    "toggle_langs": "言語を切り替え",
+    "search": "検索"
+  },
+  "filters": {
+    "title": "フィルター",
+    "name": "ボーカリスト名",
+    "languages": "対応言語",
+    "types": "ボイスバンクの種類",
+    "tags": "タグ",
+    "languages-placeholder": "すべての言語",
+    "types-placeholder": "すべてのボイスバンク種類",
+    "tags-placeholder": "すべてのタグ",
+    "sort": "並び替え",
+    "show-if-no-voicebanks": "ボイスバンクがなくても表示"
+  },
+  "sort": {
+    "popular": "人気",
+    "voicebank-count": "ボイスバンク数",
+    "recently-updated": "最近更新",
+    "new": "最新",
+    "old": "古い順"
+  },
+  "singer": {
+    "author": "公開者",
+    "site": "ウェブサイト",
+    "siteLink": "リンク",
+    "repository": "リポジトリ",
+    "information": "基本情報",
+    "terms-of-use": "利用規約",
+    "voicebanks": "ボイスバンク",
+    "samples": "サンプル",
+    "gallery": "ギャラリー",
+    "videos": "動画",
+    "download": "ダウンロード"
+  },
+  "info": {
+    "creators": {
+      "title": "サイト制作者",
+      "first-description": "バックエンドとフロントエンドの開発",
+      "second-description": "テスト、デザインアイデア、機能提案"
+    },
+    "videos": {
+      "title": "自分のボーカリストを追加する方法"
+    },
+    "rules": {
+      "title": "ルール",
+      "no-prohibited-content": "差別的・政治的な内容や、お住まいの国で禁止されているコンテンツは投稿しないでください。",
+      "no-disinformation": "未公開のボイスバンクや未実装の機能に関する情報を追加しないでください。リリースに含まれるZIPアーカイブには、該当する種類のボイスバンクのみを含めてください。",
+      "no-repository-spam": "\"visingers\"タグの付いた同一または無意味なリポジトリを複数作成しないでください。",
+      "no-tags-spam": "ボイスバンクやボーカリストに関係のないタグを追加しないでください。"
+    }
+  },
+  "user": "ユーザー",
+  "user-singers": "このユーザーが追加したボーカリスト一覧",
+  "in-development": "開発中",
+  "back": "ボーカリスト一覧に戻る",
+  "not-found": "ページが見つかりません"
+}

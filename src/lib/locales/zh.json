@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "voicebanks": "我的语音库",
+    "singers": "歌手",
+    "groups": "群组",
+    "info": "信息"
+  },
+  "button": {
+    "back": "返回",
+    "toggle_dark": "切换主题",
+    "toggle_langs": "切换语言",
+    "search": "搜索"
+  },
+  "filters": {
+    "title": "筛选",
+    "name": "歌手名称",
+    "languages": "支持语言",
+    "types": "语音库类型",
+    "tags": "标签",
+    "languages-placeholder": "所有语言",
+    "types-placeholder": "所有语音库类型",
+    "tags-placeholder": "所有标签",
+    "sort": "排序",
+    "show-if-no-voicebanks": "即使没有语音库也显示"
+  },
+  "sort": {
+    "popular": "热门",
+    "voicebank-count": "语音库数量",
+    "recently-updated": "最近更新",
+    "new": "最新",
+    "old": "最早"
+  },
+  "singer": {
+    "author": "发布者",
+    "site": "网站",
+    "siteLink": "链接",
+    "repository": "仓库",
+    "information": "基本信息",
+    "terms-of-use": "使用条款",
+    "voicebanks": "语音库",
+    "samples": "示例",
+    "gallery": "画廊",
+    "videos": "视频",
+    "download": "下载"
+  },
+  "info": {
+    "creators": {
+      "title": "网站制作者",
+      "first-description": "后端与前端开发",
+      "second-description": "测试、设计思路与功能建议"
+    },
+    "videos": {
+      "title": "如何添加自己的歌手"
+    },
+    "rules": {
+      "title": "规则",
+      "no-prohibited-content": "请勿发布冒犯性、政治性内容或任何在您所在国家/地区被禁止的内容。",
+      "no-disinformation": "请勿添加尚未发布的语音库信息或尚未实现的功能。发布包中的 ZIP 压缩包必须只包含对应类型的语音库。",
+      "no-repository-spam": "请勿创建多个相同或无意义的仓库并添加“visingers”标签。",
+      "no-tags-spam": "请勿添加与语音库或歌手无关的标签。"
+    }
+  },
+  "user": "用户",
+  "user-singers": "该用户添加的歌手列表",
+  "in-development": "开发中",
+  "back": "返回歌手列表",
+  "not-found": "页面未找到"
+}

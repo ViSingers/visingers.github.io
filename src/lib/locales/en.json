@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "voicebanks": "My Voicebanks",
+    "singers": "Singers",
+    "groups": "Groups",
+    "info": "Information"
+  },
+  "button": {
+    "back": "Back",
+    "toggle_dark": "Toggle Theme",
+    "toggle_langs": "Toggle Language",
+    "search": "Search"
+  },
+  "filters": {
+    "title": "Filters",
+    "name": "Singer Name",
+    "languages": "Languages",
+    "types": "Voicebank Types",
+    "tags": "Tags",
+    "languages-placeholder": "All Languages",
+    "types-placeholder": "All Voicebank Types",
+    "tags-placeholder": "All Tags",
+    "sort": "Sort",
+    "show-if-no-voicebanks": "Show even if no voicebanks"
+  },
+  "sort": {
+    "popular": "Popular",
+    "voicebank-count": "Voicebank Count",
+    "recently-updated": "Recently Updated",
+    "new": "Newest",
+    "old": "Oldest"
+  },
+  "singer": {
+    "author": "Published by",
+    "site": "Website",
+    "siteLink": "Link",
+    "repository": "Repository",
+    "information": "General Information",
+    "terms-of-use": "Terms of Use",
+    "voicebanks": "Voicebanks",
+    "samples": "Samples",
+    "gallery": "Gallery",
+    "videos": "Videos",
+    "download": "Download"
+  },
+  "info": {
+    "creators": {
+      "title": "Site Creators",
+      "first-description": "Backend and frontend development",
+      "second-description": "Testing, design ideas and feature suggestions"
+    },
+    "videos": {
+      "title": "How to Add Your Singer"
+    },
+    "rules": {
+      "title": "Rules",
+      "no-prohibited-content": "Do not post offensive, political content, or anything prohibited in your country.",
+      "no-disinformation": "Do not add information about unreleased voicebanks or unimplemented features. The zip archive in the release must contain only the voicebank of the corresponding type.",
+      "no-repository-spam": "Do not create multiple identical or meaningless repositories with the \"visingers\" tag.",
+      "no-tags-spam": "Do not add irrelevant tags to voicebanks or singers."
+    }
+  },
+  "user": "User",
+  "user-singers": "Singers added by this user",
+  "in-development": "In Development",
+  "back": "Back to Singers",
+  "not-found": "Page Not Found"
+}

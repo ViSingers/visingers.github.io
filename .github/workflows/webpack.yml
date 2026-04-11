@@ -21,40 +21,35 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./client
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile   # аналог npm ci
+
       - name: Build
-        run: npm run build
-        env:
-          VITE_VISINGERS_API: https://visingers-api.megageorgio.ru
-          VITE_VISINGERS_API_BASE_URL: https://visingers-api.megageorgio.ru/api
+        run: bun run build
+
       - name: Copy index.html to 404.html
         run: cp ./dist/index.html ./dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist folder
-          path: './client/dist'
+          path: './dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
