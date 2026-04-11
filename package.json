@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@savy011/tilt-svelte": "^0.2.0",
-    "@sveltejs/adapter-auto": "^7.0.1",
+    "@sveltejs/adapter-static": "^3.0.10",
     "flowbite": "^2.5.2",
     "flowbite-svelte": "^0.47.4",
     "idb-keyval": "^6.2.1",
