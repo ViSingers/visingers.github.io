@@ -16,7 +16,7 @@
   }
 </script>
 
-<Navbar rounded color="default" class="sticky top-0 z-50 shadow-sm">
+<Navbar color="default" class="sticky top-0 pb-1 z-50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-xl border-b border-black/20 shadow-md">
   <NavBrand href="/">
     <div class="h-10 flex items-center justify-center overflow-hidden">
       <img src="/logo.png" alt="Logo" class="h-full object-contain" />
