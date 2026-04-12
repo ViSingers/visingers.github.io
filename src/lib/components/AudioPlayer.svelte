@@ -1,3 +1,17 @@
+<script lang="ts" module>
+  let currentlyPlaying: HTMLAudioElement | null = null;
+
+  export function stopAllOthers(except: HTMLAudioElement | null = null) {
+    if (currentlyPlaying && currentlyPlaying !== except) {
+      currentlyPlaying.pause();
+      currentlyPlaying.currentTime = 0;
+    }
+    if (except) {
+      currentlyPlaying = except;
+    }
+  }
+</script>
+
 <script lang="ts">
   import { Play, Pause } from 'lucide-svelte';
   export let src: string;
@@ -9,8 +23,13 @@
   let progress = 0;
 
   function togglePlay() {
-    if (isPlaying) audio.pause();
-    else audio.play();
+    if (isPlaying) {
+      audio.pause();
+    }
+    else {
+      stopAllOthers(audio);
+      audio.play();
+    }
   }
 
   function onTimeUpdate() {
