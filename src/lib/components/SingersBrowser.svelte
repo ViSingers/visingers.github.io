@@ -9,6 +9,7 @@
   import tilt from '@savy011/tilt-svelte';
 
   export let targetUser: string | null = null;
+  export let targetGroup: string | null = null;
 
   let data: any = null;
   let loading = true;
@@ -37,7 +38,8 @@
     const matchesVoicebankFilter = showIfNoVoicebanks || hasVoicebanks;
     
     const matchesUser = targetUser ? singer.creatorLogin.toLowerCase() === targetUser.toLowerCase() : true;
-
+    const matchesGroup = targetGroup ? (singer.groups || []).some((g: any) => g.repositoryName.toLowerCase() === targetGroup.toLowerCase()) : true;
+    
     const singerLangs = singer.voicebanks?.flatMap((vb: any) => vb.languages || []) || [];
     const matchesLang = selectedLanguages.length === 0 || selectedLanguages.some(l => singerLangs.includes(l));
     const singerVbTypes = singer.voicebanks?.map((vb: any) => vb.type) || [];
@@ -45,7 +47,7 @@
     const singerTags = singer.tags?.map((t: any) => t.name) || [];
     const matchesTags = selectedTags.length === 0 || selectedTags.every(t => singerTags.includes(t));
     
-    return matchesSearch && matchesVoicebankFilter && matchesLang && matchesVbType && matchesTags && matchesUser;
+    return matchesSearch && matchesVoicebankFilter && matchesLang && matchesVbType && matchesTags && matchesUser && matchesGroup;
   }) || [];
 
   $: sortedSingers = [...filteredSingers].sort((a, b) => {

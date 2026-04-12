@@ -43,6 +43,9 @@
     "videos": "動画",
     "download": "ダウンロード"
   },
+  "group": {
+    "members": "メンバー"
+  },
   "info": {
     "creators": {
       "title": "サイト制作者",

@@ -11,6 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@icons-pack/svelte-simple-icons": "^7.2.0",
     "@savy011/tilt-svelte": "^0.2.0",
     "@sveltejs/adapter-static": "^3.0.10",
     "flowbite": "^2.5.2",

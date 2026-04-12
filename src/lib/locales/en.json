@@ -43,6 +43,9 @@
     "videos": "Videos",
     "download": "Download"
   },
+  "group": {
+    "members": "members"
+  },
   "info": {
     "creators": {
       "title": "Site Creators",

@@ -4,7 +4,7 @@ ViSingers is a virtual singers catalog. You can add your singer here by creating
 ## Templates
 - [Light Singer Template](https://github.com/ViSingers/light-singer-template) - Readme contains only necessary sections, no gallery
 - [Singer Template](https://github.com/ViSingers/singer-template) - Contains everything
-- [Group Template](https://github.com/ViSingers/group-template) - Not implemented yet
+- [Group Template](https://github.com/ViSingers/group-template) - Contains members section
 
 ## How to add your singer
 https://github.com/user-attachments/assets/bbc6d481-06f4-4973-a7c7-82487200e5d3
@@ -15,10 +15,8 @@ https://github.com/user-attachments/assets/bbc6d481-06f4-4973-a7c7-82487200e5d3
 - Add images to gallery directory (optional)
 - Add website url (optional)
 - Add "visingers" tag (you can also add other tags)
-- Wait ~1 minute and check the catalog
+- Wait ~10-15 minutes and check the catalog
 
 ## Future plans
-- Groups
 - Code refactoring
-- Make a better design
 - OpenUtau integration (fork or separate application that controls singers directory)

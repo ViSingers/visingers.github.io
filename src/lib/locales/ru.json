@@ -43,6 +43,9 @@
     "videos": "Видео",
     "download": "Скачать"
   },
+  "group": {
+    "members": "участников"
+  },
   "info": {
     "creators": {
       "title": "Создатели сайта",

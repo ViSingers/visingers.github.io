@@ -43,6 +43,9 @@
     "videos": "视频",
     "download": "下载"
   },
+  "group": {
+    "members": "成员"
+  },
   "info": {
     "creators": {
       "title": "网站制作者",
