@@ -1,0 +1,16 @@
+{
+  "name": "ViSingers",
+  "short_name": "ViSingers",
+  "description": "Virtual Singers Catalog",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ff3e00",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

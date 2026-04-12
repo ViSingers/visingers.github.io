@@ -13,6 +13,7 @@
   import lgFullscreen from 'lightgallery/plugins/fullscreen';
   import lgThumbnail from 'lightgallery/plugins/thumbnail';
   import tilt from '@savy011/tilt-svelte';
+  import { reveal } from 'svelte-reveal';
 
   import 'lightgallery/css/lightgallery.css';
   import 'lightgallery/css/lg-zoom.css';
@@ -157,7 +158,7 @@
     </div>
 
     <section class="space-y-8">
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4" use:reveal>
         <div class="p-3 bg-gray-100 dark:bg-gray-800 rounded-2xl">
           <Music class="w-6 h-6 text-gray-600 dark:text-gray-300" />
         </div>
@@ -167,6 +168,7 @@
       <div class="space-y-6">
         {#if singer.voicebanks && singer.voicebanks.length > 0}
           {#each singer.voicebanks as vb}
+            <div use:reveal>
             <Card class="max-w-none border-none bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800/70 transition-colors shadow-sm p-6 rounded-3xl">
               <div class="flex flex-col space-y-5 w-full">
                 
@@ -201,6 +203,7 @@
 
               </div>
             </Card>
+            </div>
           {/each}
         {:else}
           <p class="text-gray-500 italic">No voicebanks listed for this singer.</p>
@@ -210,7 +213,7 @@
 
     {#if singer.imageUrls && singer.imageUrls.length > 0}
       <section class="space-y-8">
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4" use:reveal>
           <div class="p-3 bg-gray-100 dark:bg-gray-800 rounded-2xl">
             <ImageIcon class="w-6 h-6 text-gray-600 dark:text-gray-300" />
           </div>
@@ -228,7 +231,7 @@
               data-src={getRawUrl(img)}
               data-sub-html="<div class='lg-sub-title'>{formatImageTitle(img)}</div>"
             >
-            <div {@attach tilt({reverse: true})}>
+            <div {@attach tilt({reverse: true})} use:reveal>
               <img 
                 src={getRawUrl(img)} 
                 alt={formatImageTitle(img)} 
@@ -249,7 +252,7 @@
 
     {#if singer.videoUrls && singer.videoUrls.length > 0}
       <section class="space-y-8">
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4" use:reveal>
           <div class="p-3 bg-gray-100 dark:bg-gray-800 rounded-2xl">
             <Video class="w-6 h-6 text-gray-600 dark:text-gray-300" />
           </div>
@@ -257,7 +260,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {#each singer.videoUrls as videoId}
-            <div class="aspect-video rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-black/5">
+            <div class="aspect-video rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-black/5" use:reveal>
               <iframe
                 width="100%"
                 height="100%"

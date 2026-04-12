@@ -3,7 +3,6 @@
   import { t, locale } from 'svelte-i18n';
   import { setLocale } from '$lib/i18n';
   import { Globe, Info, Mic, Users } from 'lucide-svelte';
-  import { page } from '$app/stores';
 
   let languages = [
     { code: 'en', name: 'English' },
