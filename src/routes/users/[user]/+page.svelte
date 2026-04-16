@@ -9,7 +9,8 @@
   let currentUser: any = null;
 
   onMount(async () => {
-    const data = await dataService.getData();
+    let data = await dataService.getData();
+    if (!data) data = await dataService.checkUpdate();
     currentUser = data.users.find((u: any) => u.login === $page.params.user);
   });
 </script>

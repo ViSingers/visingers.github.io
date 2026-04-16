@@ -12,7 +12,8 @@
   let loading = true;
 
   onMount(async () => {
-    const data = await dataService.getData();
+    let data = await dataService.getData();
+    if (!data) data = await dataService.checkUpdate();
     currentGroup = data.groups.find((g: any) => g.repositoryName === $page.params.group);
     loading = false;
   });

@@ -27,7 +27,8 @@
 
   onMount(async () => {
     const { user, repo } = $page.params;
-    const data = await dataService.getData();
+    let data = await dataService.getData();
+    if (!data) data = await dataService.checkUpdate();
     singer = data?.singers.find((s: any) => s.creatorLogin === user && s.repositoryName === repo);
     loading = false;
 

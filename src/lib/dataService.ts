@@ -50,11 +50,6 @@ export const dataService = {
          creatorName: (userMap.get(s.creatorId) as any)?.name || 'unknown'
        }));       
     }
-
-    if (!data || !data.singers || !data.users) {
-      await this.checkUpdate();
-    }
-
     return data;
   }
 };
