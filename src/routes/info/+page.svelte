@@ -14,7 +14,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-32">
       <Card class="border-none bg-gray-50 dark:bg-gray-800/50 rounded-3xl p-6" {@attach tilt({ max: 8 })}>
         <div class="flex items-center gap-6">
-          <Avatar src="/images/avatar1.jpg" size="xl" />
+          <Avatar src="/images/avatar1.jpg" size="xl" class="aspect-square object-cover"/>
           <div class="space-y-1">
             <h3 class="text-2xl font-bold">msan</h3>
             <p class="text-gray-500 text-sm">{$t('info.creators.first-description')}</p>
@@ -25,7 +25,7 @@
 
       <Card class="border-none bg-gray-50 dark:bg-gray-800/50 rounded-3xl p-6" {@attach tilt({ max: 8 })}>
         <div class="flex items-center gap-6">
-          <Avatar src="/images/avatar2.jpg" size="xl" />
+          <Avatar src="/images/avatar2.jpg" size="xl" class="aspect-square object-cover"/>
           <div class="space-y-1">
             <h3 class="text-2xl font-bold">HHS_kt</h3>
             <p class="text-gray-500 text-sm">{$t('info.creators.second-description')}</p>
