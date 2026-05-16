@@ -45,6 +45,7 @@
   });
 
   $: details = singer?.details[$locale?.split('-')[0]] || singer?.details['en'] || {};
+  $: hasLongText = ((details?.generalInfo || []).join('').length > 640) || ((details?.termsOfUse || []).join('').length > 640);
   
   function getAvatarUrl() {
     return `https://raw.githubusercontent.com/${singer.creatorLogin}/${singer.repositoryName}/${singer.avatarUrl}`;
@@ -120,7 +121,7 @@
       </div>
     </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 {hasLongText ? '' : 'md:grid-cols-2'} gap-8">
       {#if details.generalInfo && details.generalInfo.length > 0}
         <section class="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-[2.5rem] space-y-6" {@attach tilt({ max: 4, reverse: true })}>
           <div class="flex items-center gap-3 border-b border-gray-200 dark:border-gray-700 pb-4">
